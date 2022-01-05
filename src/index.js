@@ -66,165 +66,165 @@ function analiePosition(y, x, length, positionS){
         }
     }else if(length == 3){
         if(positionS == 'h'){
-            if(x+length == 10){
-                if(y==9 && x!=0){
-                    pos = 0;
-                    for(let i = y-1; i<y+1; i++){
-                        for(let j = x-1; j<x+length; j++){
-                            pos += board[i][j];
-                            console.log(`${i}, ${j}`);
-                        }
-                    }
-                    if(pos !=0){
-                        return false;
-                    }else{
-                        return true;
-                    } 
-                }
-                if(y==0 && x!=0){
-                    pos = 0;
-                    for(let i = y; i<=y+1; i++){
-                        for(let j = x-1; j<x+length; j++){
-                            pos += board[i][j];
-                            console.log(`${i}, ${j}`);
-                        }
-                    }
-                    if(pos !=0){
-                        return false;
-                    }else{
-                        return true;
-                    }
-                }else if(y!=0 && x!=0){
-                    pos=0;
-                    for(let i = y-1; i<=y+1; i++){
-                        for(let j = x-1; j<x+length; j++){
-                            pos += board[i][j];
-                            console.log(`${i}, ${j}`);
-                        }
-                    }
-                    if(pos !=0){
-                        return false;
-                    }else{
-                        return true;
-                    }
-                }    
-            }else if(y==0 && x==0){
-                pos = 0;
-                for(let i = y; i<=y+2; i++){
-                    for(let j = x; j<=x+length; j++){
-                        pos += board[i][j];
-                        console.log(`${i}, ${j}`);
-                    }
-                }
-                if(pos !=0){
-                    return false;
-                }else{
-                    return true;
-                }
-            }else if(y==0 && x!=0){
-                pos = 0;
-                for(let i = y; i<=y+1; i++){
-                    for(let j = x-1; j<=x+length; j++){
-                        pos += board[i][j];
-                        console.log(`${i}, ${j}`);
-                    }
-                }
-                if(pos !=0){
-                    return false;
-                }else{
-                    return true;
-                }
-            }else if(y==9 && x==0){
-                pos =0;
-                for(let i = y-1; i<=y; i++){
-                    for(let j = x; j<=x+length; j++){
-                        pos += board[i][j];
-                        console.log(`${i}, ${j}`);
-                    }
-                }
-                if(pos !=0){
-                    return false;
-                }else{
-                    return true;
-                }
-            }else if(y==9 && x!=0){
-                pos =0;
-                for(let i = y-1; i<=y; i++){
-                    for(let j = x-1; j<=x+length; j++){
-                        pos += board[i][j];
-                        console.log(`${i}, ${j}`);
-                    }
-                }
-                if(pos !=0){
-                    return false;
-                }else{
-                    return true;
-                }
-            }else if(y!=0 && x==0){
-                pos =0;
-                for(let i = y-1; i<=y; i++){
-                    for(let j = x; j<=x+length; j++){
-                        pos += board[i][j];
-                        console.log(`${i}, ${j}`);
-                    }
-                }
-                if(pos !=0){
-                    return false;
-                }else{
-                    return true;
-                }
-            }else if(y!=0 && x!=0){
-                pos=0;
-                for(let i = y-1; i<=y+1; i++){
-                    for(let j = x-1; j<=x+length; j++){
-                        pos += board[i][j];
-                        console.log(`${i}, ${j}`);
-                    }
-                }
-                if(pos !=0){
-                    return false;
-                }else{
-                    return true;
-                }
-            } 
+            return analiseHorizontal(y,x,length);
         }else if(positionH == 'v'){
-            if(y+length > 10){
-                return false;
-            }else{
-                return true;
-            }
+            return analiseVertical(y, x, length);
         }
     }
+}
+function analiseVertical(y, x, length){
+    var pos = 0;
+    if(y+length == 10){
+        if(y != 0 && x==0){
+            pos=0;
+            for(let i =y-1; i<y+length; i++){
+                for(let j=x; j<=x+1; j++){
+                  pos += board[i][j];  
+                  console.log(`${i}, ${j}`);
+                }
+            }
+            return validatePosition(pos);
+        }else if(y != 0 && x != 0){
+            pos=0;
+            for(let i =y-1; i<y+length; i++){
+                for(let j=x-1; j<=x+length; j++){
+                  pos += board[i][j];  
+                  console.log(`${i}, ${j}`);
+                }
+            }
+            return validatePosition(pos);
+        }
+    }if(y ==0 && x==0){
+        pos=0;
+        for(let i =y; i<=length+1; i++){
+            for(let j=x; j<=x+1; j++){
+              pos += board[i][j];  
+              console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }else if(y !=0 && x==0){
+        pos=0;
+        for(let i =y-1; i<y+length+1; i++){
+            for(let j=x; j<=x+1; j++){
+              pos += board[i][j];  
+              console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }
+}
+function analiseHorizontal(y, x, length){
+    var pos = 0;
+    if(x+length == 10){
+        if(y==9 && x!=0){
+            pos = 0;
+            for(let i = y-1; i<y+1; i++){
+                for(let j = x-1; j<x+length; j++){
+                    pos += board[i][j];
+                    console.log(`${i}, ${j}`);
+                }
+            }
+            return validatePosition(pos);
+        }
+        if(y==0 && x!=0){
+            pos = 0;
+            for(let i = y; i<=y+1; i++){
+                for(let j = x-1; j<x+length; j++){
+                    pos += board[i][j];
+                    console.log(`${i}, ${j}`);
+                }
+            }
+            return validatePosition(pos);
+        }else if(y!=0 && x!=0){
+            pos=0;
+            for(let i = y-1; i<=y+1; i++){
+                for(let j = x-1; j<x+length; j++){
+                    pos += board[i][j];
+                    console.log(`${i}, ${j}`);
+                }
+            }
+            return validatePosition(pos);
+        }    
+    }else if(y==0 && x==0){
+        pos = 0;
+        for(let i = y; i<=y+2; i++){
+            for(let j = x; j<=x+length; j++){
+                pos += board[i][j];
+                console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }else if(y==0 && x!=0){
+        pos = 0;
+        for(let i = y; i<=y+1; i++){
+            for(let j = x-1; j<=x+length; j++){
+                pos += board[i][j];
+                console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }else if(y==9 && x==0){
+        pos =0;
+        for(let i = y-1; i<=y; i++){
+            for(let j = x; j<=x+length; j++){
+                pos += board[i][j];
+                console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }else if(y==9 && x!=0){
+        pos =0;
+        for(let i = y-1; i<=y; i++){
+            for(let j = x-1; j<=x+length; j++){
+                pos += board[i][j];
+                console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }else if(y!=0 && x==0){
+        pos =0;
+        for(let i = y-1; i<=y; i++){
+            for(let j = x; j<=x+length; j++){
+                pos += board[i][j];
+                console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }else if(y!=0 && x!=0){
+        pos=0;
+        for(let i = y-1; i<=y+1; i++){
+            for(let j = x-1; j<=x+length; j++){
+                pos += board[i][j];
+                console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    } 
+}
+function validatePosition(pos){
+    if(pos !=0){
+        return false;
+    }else{
+        return true;
+    } 
 }
 function createShip(y, x, length, positionS){
     console.log(x);
     console.log(y);
-    if(length == 4){
-        if(positionS == 'h'){
-            for(let j = x; j<x+length; j++){
-                board[y][j] = 1;
-                array[y][j].classList.add('row-1');
-            }
-        }else if(positionH == 'v'){
-            for(let j = y; j< y+length; j++){
-                array[j][x].classList.add('row-1');
-                board[j][x] = 1;
-            }
+    if(positionS == 'h'){
+        for(let j = x; j<x+length; j++){
+            board[y][j] = 1;
+            array[y][j].classList.add('row-1');
         }
-    }else if(length == 3){
-        if(positionS == 'h'){
-            for(let j = x; j<x+length; j++){
-                board[y][j] = 1;
-                array[y][j].classList.add('row-1');
-            }
-        }else if(positionH == 'v'){
-            for(let j = y; j< y+length; j++){
-                array[j][x].classList.add('row-1');
-                board[j][x] = 1;
-            }
-        }
+    }else if(positionH == 'v'){
+        for(let j = y; j< y+length; j++){
+            array[j][x].classList.add('row-1');
+            board[j][x] = 1;
+        }        
     }
 }
+
 gameBoard();
 //board[1][1] =1;
 //board[8][3] =1;

@@ -13,12 +13,12 @@ header{
     display: flex;  
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .table-1{
     display: grid;
     border: black solid 1px;
-    /*width: 650px;*/
-    width: 50%;
+    width: 80%;
     height: 500px;
     background-color: rgb(58, 137, 189);
 }
