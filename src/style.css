@@ -28,6 +28,9 @@ header{
 .row-1{
     border: solid red 1px;
 }
-.atack{
+.atackTarget{
     background-color: red;
+}
+.atackFailure{
+    background-color: yellow;
 }

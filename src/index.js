@@ -54,32 +54,43 @@ function gameBoard(){
                             console.log(`TRy:${number}`);
                             number++;
                         }
-                        
                     }  
                 }else {
                     console.log('lets go!');
                     console.log(`TRy:${number}`);
                     console.log(`${i}, ${j}`);
-                    if(board[i][j]==1){
-                        console.log('Well done!');
-                        board[i][j] == -1;
-                    }else if(board[i][j] == -1){
-                        console.log('Try Other!')
+                    if(actackShipGUI(i, j)== false){
+                        console.log('FAilure');
+                    }else if(actackShipGUI(i, j)== true){
+                        console.log('On Target');
                     }else{
-                        console.log('Failure!')
+                        console.log('try again');
                     }
                 }                
             });        
         }
     }    
 }
+function actackShipGUI(y,x){
+    if(atackShip(y, x) == null){
+        board[y][x] = -1;
+        array[y][x].classList.add('atackFailure');
+        return false;
+    }else if(atackShip(y, x) == false){
+        return null;
+    }else{
+        board[y][x] = -1;
+        array[y][x].classList.add('atackTarget');
+        return true;
+    }
+}
 function atackShip(y, x){
     if(board[y][x] == -1){
-
-    }else if(board[y][x] == 1){
-
+        return false;
+    }else if(board[y][x] == 1){        
+        return true;
     }else{
-
+        return null;
     }
 }
 function analiePosition(y, x, length, positionS){
@@ -290,6 +301,7 @@ function validatePosition(pos){
     } 
 }
 function createShip(y, x, length, positionS){
+    var id =0;
     console.log(x);
     console.log(y);
     if(positionS == 'h'){
@@ -306,5 +318,3 @@ function createShip(y, x, length, positionS){
 }
 
 gameBoard();
-//board[1][1] =1;
-//board[8][3] =1;
