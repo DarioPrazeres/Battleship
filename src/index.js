@@ -14,15 +14,13 @@ var positionH = 'h';
 const pos = [];
 table_1.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
 table_1.style.gridTemplateRows = `repeat(${width}, 1fr)`; 
-
+var number = 0;
 
 turn.addEventListener('click', ()=>{
     if(positionH == 'h'){
         positionH = 'v';
-        console.log(positionH);
     }else{
         positionH = 'h';
-        console.log(positionH);
     }
 });
 function gameBoard(){
@@ -36,17 +34,53 @@ function gameBoard(){
             row.classList.add('row');
             table_1.appendChild(row);
             row.addEventListener('click', ()=>{
-                console.log(`${i}, ${j}`);
-                console.log(analiePosition(i, j, 3, positionH));
-                if(analiePosition(i, j, 3, positionH) == true){
-                    createShip(i, j, 3, positionH);
-                    lengthShip--;
-                    console.log(lengthShip);
-                }
-            });
-        
+                if(number < 10){                    
+                    console.log(analiePosition(i, j, 3, positionH));
+                    if(analiePosition(i, j, 3, positionH) == true){
+                        if(number == 9){
+                            createShip(i, j, 4, positionH);
+                            console.log(`TRy:${number}`);
+                            number++;
+                        }else if(number<9 && number>6){
+                            createShip(i, j, 3, positionH);
+                            console.log(`TRy:${number}`);
+                            number++;
+                        }else if(number<7 && number>3){
+                            createShip(i, j, 2, positionH);
+                            console.log(`TRy:${number}`);
+                            number++;
+                        }else if(number >=0 && number<4){
+                            createShip(i, j, 1, positionH);
+                            console.log(`TRy:${number}`);
+                            number++;
+                        }
+                        
+                    }  
+                }else {
+                    console.log('lets go!');
+                    console.log(`TRy:${number}`);
+                    console.log(`${i}, ${j}`);
+                    if(board[i][j]==1){
+                        console.log('Well done!');
+                        board[i][j] == -1;
+                    }else if(board[i][j] == -1){
+                        console.log('Try Other!')
+                    }else{
+                        console.log('Failure!')
+                    }
+                }                
+            });        
         }
     }    
+}
+function atackShip(y, x){
+    if(board[y][x] == -1){
+
+    }else if(board[y][x] == 1){
+
+    }else{
+
+    }
 }
 function analiePosition(y, x, length, positionS){
     var pos = 0;
@@ -75,7 +109,16 @@ function analiePosition(y, x, length, positionS){
 function analiseVertical(y, x, length){
     var pos = 0;
     if(y+length == 10){
-        if(y != 0 && x==0){
+        if(y != 0 && x == 9){
+            pos=0;
+            for(let i =y-1; i<y+length; i++){
+                for(let j=x-1; j<x+1; j++){
+                  pos += board[i][j];  
+                  console.log(`${i}, ${j}`);
+                }
+            }
+            return validatePosition(pos);
+        }else if(y != 0 && x==0){
             pos=0;
             for(let i =y-1; i<y+length; i++){
                 for(let j=x; j<=x+1; j++){
@@ -86,18 +129,28 @@ function analiseVertical(y, x, length){
             return validatePosition(pos);
         }else if(y != 0 && x != 0){
             pos=0;
-            for(let i =y-1; i<y+length; i++){
-                for(let j=x-1; j<=x+length; j++){
+            for(let i =y-1; i<y+length-1; i++){
+                for(let j=x-1; j<x+length-1; j++){
                   pos += board[i][j];  
                   console.log(`${i}, ${j}`);
                 }
             }
             return validatePosition(pos);
         }
-    }if(y ==0 && x==0){
+    }else if(y ==0 && x==0){
         pos=0;
-        for(let i =y; i<=length+1; i++){
+        for(let i =y; i<=length; i++){
             for(let j=x; j<=x+1; j++){
+              pos += board[i][j];  
+              console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }else if(y == 0 && x == 9){
+        pos=0;
+        console.log('entrei')
+        for(let i =y; i<y+length+1; i++){
+            for(let j=x-1; j<x+1; j++){
               pos += board[i][j];  
               console.log(`${i}, ${j}`);
             }
@@ -107,6 +160,33 @@ function analiseVertical(y, x, length){
         pos=0;
         for(let i =y-1; i<y+length+1; i++){
             for(let j=x; j<=x+1; j++){
+              pos += board[i][j];  
+              console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }else if(y !=0 && x == 9){
+        pos=0;
+        for(let i =y-1; i<y+length; i++){
+            for(let j=x-1; j<x+1; j++){
+              pos += board[i][j];  
+              console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }else if(y !=0 && x !=0){
+        pos=0;
+        for(let i =y-1; i<y+length; i++){
+            for(let j=x-1; j<x+length-1; j++){
+              pos += board[i][j];  
+              console.log(`${i}, ${j}`);
+            }
+        }
+        return validatePosition(pos);
+    }else if(y == 0 && x != 0){
+        pos=0;
+        for(let i =y; i<y+length; i++){
+            for(let j=x-1; j<x+length-1; j++){
               pos += board[i][j];  
               console.log(`${i}, ${j}`);
             }
