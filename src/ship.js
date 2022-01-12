@@ -1,9 +1,9 @@
 class Ship{
-    constructor(y, x, length, positionS){
-        this.y = y;
-        this.x = x;
-        this.length = length; 
-        this.positionS=positionS;
+    constructor(position, length){
+       this.position=position;
+       this.length=length;
     }
-
+    hit=function(){
+        
+    }
 }

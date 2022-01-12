@@ -15,7 +15,7 @@ header{
     align-items: center;
     flex-direction: column;
 }
-.table-1{
+.table{
     display: grid;
     border: black solid 1px;
     width: 80%;
