@@ -42,9 +42,6 @@ function gameBoard(){
     createShip(0, 2, 1, 'v');
     createShip(9, 2, 1, 'v');
     createShip(7, 2, 1, 'v');
-    for(let j = 0; j < 10; j++){
-        //analise(j);       
-    }
     
 }
 function actackShipGUI(y,x){
