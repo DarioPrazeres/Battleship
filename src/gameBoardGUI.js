@@ -32,9 +32,18 @@ function gameBoard(){
             });        
         }
     } 
+    createShip(3, 9, 4, 'v');
+    createShip(0, 6, 3, 'h');
+    createShip(9, 6, 3, 'h');
+    createShip(6, 7, 2, 'v');
+    createShip(2, 7, 2, 'v');
+    createShip(4, 5, 2, 'v');
+    createShip(3, 2, 1, 'v');
+    createShip(0, 2, 1, 'v');
+    createShip(9, 2, 1, 'v');
+    createShip(7, 2, 1, 'v');
     for(let j = 0; j < 10; j++){
-        analise(j);
-       
+        //analise(j);       
     }
     
 }

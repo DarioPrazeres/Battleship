@@ -6,24 +6,30 @@ body{
     margin: 0;
     padding: 0;
 }
+.bg-dark{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    text-align: center;
+}
 header{
     text-align: center;
 }
-.gameBoard{
+.gameBoard, .mod{
     display: flex;  
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
 }
 .table{
     display: grid;
-    border: black solid 1px;
-    width: 80%;
+    border:solid rgba(0, 0, 0, 0.397) 0.5px;
+    width: 50%;
     height: 500px;
     background-color: rgb(58, 137, 189);
 }
 .row{
-    border:dashed black 1px;
+    border:solid rgba(0, 0, 0, 0.397) 0.5px;
 }
 .row-1{
     border: solid red 1px;
@@ -33,4 +39,30 @@ header{
 }
 .atackFailure{
     background-color: yellow;
+}
+.table-1, .table-0{
+    width: 45%;
+    margin: 5px;
+}
+#turn, #play{
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 150px;
+    height: 35px;
+    margin: 5px;
+    color: wheat;
+    background-color: rgb(0, 0, 0);
+}
+#turn{
+    background-color: rgb(58, 137, 189);
+}
+@media (max-width: 768px) {
+    .gameBoard{
+        flex-direction: column;
+    }
+    .table-1, .table-0{
+        width: 90%;
+        margin: 5px;
+    }
 }
