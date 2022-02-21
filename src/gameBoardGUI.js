@@ -90,4 +90,4 @@ function analise(index){
     }
     
 }
-export default gameBoard();
+export default gameBoard;

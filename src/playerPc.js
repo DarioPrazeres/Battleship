@@ -77,4 +77,4 @@ function createShip(y, x, length, positionS){
         }        
     }
 }
-export default gameBoardPC();
+export default gameBoardPC;
