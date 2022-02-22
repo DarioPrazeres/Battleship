@@ -1,5 +1,5 @@
 import GameBoard from "./gameBoard";
-const table_1 = document.querySelector('div.table-1');
+const table_1 = document.querySelector('div.table-0');
 const turn = document.querySelector('button#turn');
 
 const array = [];
