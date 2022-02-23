@@ -33,6 +33,7 @@ class GameBoardGuiPc {
                 table_1.appendChild(row);
                 row.addEventListener('click', ()=>{
                     console.log(`${i}, ${j}`)
+                    this.actackShipGUI(i, j);
                 });        
             }
         }  
@@ -62,7 +63,7 @@ class GameBoardGuiPc {
     actackShipGUI = (y,x)=>{
     if(this.board_1.atackShip(y, x) == false){
         this.board_1.board[y][x] = 0;
-        this.array[y][x].classList.add('atackFailure');
+        array[y][x].classList.add('atackFailure');
         return false;
     }else if(this.board_1.atackShip(y, x) == true){
         this.board_1.board[y][x] = -1;

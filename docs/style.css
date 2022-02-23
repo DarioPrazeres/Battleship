@@ -25,7 +25,7 @@ header{
     display: grid;
     border:solid rgba(0, 0, 0, 0.397) 0.5px;
     width: 50%;
-    height: 500px;
+    height: 400px;
     background-color: rgb(58, 137, 189);
 }
 .row{
@@ -43,6 +43,12 @@ header{
 .table-1, .table-0{
     width: 45%;
     margin: 5px;
+}
+.table-n{
+    display: none;
+}
+.table-d{
+    display: grid;
 }
 #turn, #play{
     border: none;
