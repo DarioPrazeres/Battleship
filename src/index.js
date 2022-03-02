@@ -16,11 +16,12 @@ function game(){
             table_1.classList.add('table-d')
             console.log('entrei')
             pc.shipGui();  
-            //pc.actackShipGUI(0,0);
+            console.log(`I'm a PC ${pc.board_1.board.length}`);
+            console.log(`I'm a Player ${player.board_1.board.length}`);
+            
         }else{
             alert('you need a 10 Ship')
-        }
-    
+        }    
     });
 }
 game();

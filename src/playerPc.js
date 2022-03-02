@@ -9,7 +9,6 @@ var width = 10;
 table_1.style.gridTemplateColumns = `repeat(${width}, 1fr)`;
 table_1.style.gridTemplateRows = `repeat(${width}, 1fr)`; 
 table_1.classList.add('table');
-const board_1 = new GameBoard();
 turn.addEventListener('click', ()=>{
     if(positionH == 'h'){
         positionH = 'v';
@@ -19,11 +18,12 @@ turn.addEventListener('click', ()=>{
 });
 class GameBoardPC {
     number;
+    board_1 = new GameBoard();
     constructor(){
         this.number = 0;
     }
     initilizePlayer = ()=>{
-        board_1.initialize();
+        this.board_1.initialize();
         for(let i = 0; i < 10; i++){
             array[i] = [];
             for(let j = 0; j < 10; j++){            
@@ -33,7 +33,7 @@ class GameBoardPC {
                 table_1.appendChild(row);
                 row.addEventListener('click', ()=>{
                     if(this.number < 10){             
-                        if(board_1.analisePosition(i, j, 3, positionH) == true){
+                        if(this.board_1.analisePosition(i, j, 3, positionH) == true){
                             if(this.number == 9){
                                 this.createShip(i, j, 4, positionH);
                                 this.number++;
@@ -55,12 +55,12 @@ class GameBoardPC {
         }  
     }
     actackShipGUI = (y,x)=>{
-        if(board_1.atackShip(y, x) == false){
-            board_1.board[y][x] = 0;
+        if(this.board_1.atackShip(y, x) == false){
+            this.board_1.board[y][x] = 0;
             array[y][x].classList.add('atackFailure');
             return false;
-        }else if(board_1.atackShip(y, x) == true){
-            board_1.board[y][x] = -1;
+        }else if(this.board_1.atackShip(y, x) == true){
+            this.board_1.board[y][x] = -1;
             array[y][x].classList.add('atackTarget');
             return true;
         }
@@ -68,13 +68,13 @@ class GameBoardPC {
     createShip(y, x, length, positionS){
         if(positionS == 'h'){
             for(let j = x; j<x+length; j++){
-                board_1.board[y][j] = 1;
+                this.board_1.board[y][j] = 1;
                 array[y][j].classList.add('row-1');
             }
         }else if(positionH == 'v'){
             for(let j = y; j< y+length; j++){
                 array[j][x].classList.add('row-1');
-                board_1.board[j][x] = 1;
+                this.board_1.board[j][x] = 1;
             }        
         }
     }
