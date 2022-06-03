@@ -89,7 +89,7 @@ This application was created as a submission to a [The Odin Project](https://the
 - A code editor as:[VS code](https://code.visualstudio.com/)
 
 <p>After you need to clone this repository, you need to open the terminal and choose the folder you want to clone</p>
-<p>Run this comand in terminal: <code>git@github.com:DarioPrazeres/Restaurant.git</code></p>
+<p>Run this comand in terminal: <code>git@github.com:DarioPrazeres/Battleship.git</code></p>
 <p>After you clone with sucess</p>
 <p>Run this comand in terminal: <code>npm install</code></p>
 <p>Run this comand in terminal: <code>npx webpack --watch</code></p>
